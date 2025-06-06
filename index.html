@@ -1,11 +1,62 @@
-<!-- ozeks-site/index.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>OZEKs</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Gaia</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f7fafc; color: #1a202c; }
+    header, section { padding: 2rem; text-align: center; }
+    h1 { font-size: 2.5rem; color: #22543d; }
+    h2 { font-size: 1.75rem; margin-top: 2rem; color: #2f855a; }
+    .map-container { height: 400px; margin: 2rem auto; max-width: 90%; border-radius: 12px; overflow: hidden; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    footer { font-size: 0.875rem; padding: 1rem; background: #e6fffa; color: #2c7a7b; }
+    button { padding: 0.75rem 1.5rem; margin-top: 1rem; background: #2b6cb0; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #2c5282; }
+  </style>
 </head>
 <body>
-  <h1>Welcome to OZEKs</h1>
-  <p>This is a test site.</p>`
+
+  <header>
+    <h1>🌍 Project Gaia</h1>
+    <p>Explore intelligently with AI-powered maps, hidden gems, and smart retreats.</p>
+  </header>
+
+  <section>
+    <h2>💬 AI Travel Assistant</h2>
+    <p>Ask: “Where are hidden gems in Nairobi?” or “Plan a retreat in Kilifi.”</p>
+    <button disabled>Chat (Coming Soon)</button>
+  </section>
+
+  <section>
+    <h2>🗺️ Interactive Map</h2>
+    <div id="map" class="map-container"></div>
+  </section>
+
+  <section>
+    <h2>📸 Social Media Hidden Gems</h2>
+    <p>We’re surfacing the most underrated spots shared by real travelers on TikTok & Instagram.</p>
+    <button disabled>Explore Gems</button>
+  </section>
+
+  <section>
+    <h2>🏢 Retreat & Conference Planner</h2>
+    <p>Use AI to discover affordable, beautiful venues for team retreats or conferences.</p>
+    <button disabled>Plan My Retreat</button>
+  </section>
+
+  <footer>
+    &copy; 2025 Project Gaia – A Future Africa Travel Intelligence Project.
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([-1.286389, 36.817223], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+  </script>
 </body>
 </html>
+
