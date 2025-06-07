@@ -3,100 +3,483 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Explore with Gaia – Explore Intelligently</title>
+  <title>Explore with Gaia – The Future of Intelligent Travel</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
     }
+    
+    /* Hero Background Animation */
+    .hero-bg {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 50%, #a7f3d0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+    
+    /* Typewriter Effect */
+    .typewriter {
+      border-right: 2px solid #059669;
+      animation: blink 1s step-end infinite;
+    }
+    
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #059669; }
+    }
+    
+    /* Floating Elements */
+    .float-icon {
+      animation: floatIcon 3s ease-in-out infinite;
+    }
+    
+    .float-icon:nth-child(2) { animation-delay: -1s; }
+    .float-icon:nth-child(3) { animation-delay: -2s; }
+    
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    /* Feature Cards Hover Effects */
+    .feature-card {
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.95);
+    }
+    
+    /* Glassmorphism Effects */
+    .glass {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    
+    /* Button Animations */
+    .btn-primary {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn-primary:hover::before {
+      left: 100%;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(5, 150, 105, 0.4);
+    }
+    
+    /* Section Transitions */
+    .section-fade {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    
+    .section-fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Comparison Cards */
+    .comparison-card {
+      transition: all 0.3s ease;
+    }
+    
+    .comparison-card:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Tech Stack Icons */
+    .tech-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .tech-icon:hover {
+      transform: rotate(5deg) scale(1.1);
+    }
   </style>
 </head>
 <body class="bg-white text-gray-800">
+  <!-- Floating Elements -->
+  <div class="fixed top-20 left-10 float-icon text-4xl opacity-20 pointer-events-none z-10">✈️</div>
+  <div class="fixed top-40 right-20 float-icon text-3xl opacity-20 pointer-events-none z-10">🗺️</div>
+  <div class="fixed bottom-40 left-20 float-icon text-3xl opacity-20 pointer-events-none z-10">🧳</div>
+
   <!-- Hero Section -->
-  <section class="bg-green-50 py-20 px-6 text-center">
-    <h1 class="text-4xl font-bold text-green-800 mb-4">Explore with Gaia</h1>
-    <p class="text-xl text-gray-700 mb-6">Your Personal AI Travel Cartographer</p>
-    <p class="max-w-2xl mx-auto text-gray-600">TripAdvisor + AI + GIS in one powerful travel assistant.</p>
-    <a href="#signup" class="mt-8 inline-block bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition">
-      Join the Beta
-    </a>
+  <section class="hero-bg py-24 px-6 text-center relative z-20">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-6xl font-bold text-green-800 mb-6 leading-tight">
+        Explore with <span class="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">Gaia</span>
+      </h1>
+      <div class="text-2xl text-gray-700 mb-8 h-16 flex items-center justify-center">
+        <span class="typewriter" id="typewriter">Your Personal AI Travel Cartographer</span>
+      </div>
+      <p class="max-w-3xl mx-auto text-xl text-gray-600 mb-12 leading-relaxed">
+        Imagine having <strong>TripAdvisor's knowledge</strong>, <strong>AI's intelligence</strong>, and <strong>GIS precision</strong> 
+        working together to plan your perfect journey. The future of travel is here.
+      </p>
+      <a href="#signup" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold inline-block">
+        Join the Revolution
+      </a>
+    </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="py-20 px-6 bg-white">
-    <h2 class="text-3xl font-semibold text-center text-green-800 mb-12">How It Works</h2>
-    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
-      <div>
-        <div class="text-5xl mb-4">🧠</div>
-        <h3 class="text-xl font-semibold text-green-700 mb-2">Chat with Gaia</h3>
-        <p class="text-gray-600">Ask anything, get smart travel suggestions instantly.</p>
-      </div>
-      <div>
-        <div class="text-5xl mb-4">🗺️</div>
-        <h3 class="text-xl font-semibold text-green-700 mb-2">Explore the Map</h3>
-        <p class="text-gray-600">Discover hotels, landmarks, safety zones, and more.</p>
-      </div>
-      <div>
-        <div class="text-5xl mb-4">✨</div>
-        <h3 class="text-xl font-semibold text-green-700 mb-2">Plan & Go</h3>
-        <p class="text-gray-600">Auto-generate itineraries, compare prices, and explore.</p>
+  <!-- Problem/Solution Comparison -->
+  <section class="py-20 px-6 bg-gradient-to-br from-gray-50 to-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">
+        Travel Planning <span class="text-green-600">Reimagined</span>
+      </h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Before -->
+        <div class="comparison-card bg-red-50 p-8 rounded-2xl border-2 border-red-100">
+          <h3 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+            😤 The Old Way
+          </h3>
+          <ul class="space-y-4 text-gray-700">
+            <li class="flex items-start"><span class="text-red-500 mr-3">❌</span>Juggling 15+ websites and apps</li>
+            <li class="flex items-start"><span class="text-red-500 mr-3">❌</span>Hours of research for basic questions</li>
+            <li class="flex items-start"><span class="text-red-500 mr-3">❌</span>No real-time safety or local insights</li>
+            <li class="flex items-start"><span class="text-red-500 mr-3">❌</span>Generic recommendations everywhere</li>
+            <li class="flex items-start"><span class="text-red-500 mr-3">❌</span>Constant price comparison headaches</li>
+          </ul>
+        </div>
+        
+        <!-- After -->
+        <div class="comparison-card bg-green-50 p-8 rounded-2xl border-2 border-green-200 glass">
+          <h3 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+            ✨ The Gaia Way
+          </h3>
+          <ul class="space-y-4 text-gray-700">
+            <li class="flex items-start"><span class="text-green-500 mr-3">✅</span>One intelligent conversation</li>
+            <li class="flex items-start"><span class="text-green-500 mr-3">✅</span>Instant, personalized answers</li>
+            <li class="flex items-start"><span class="text-green-500 mr-3">✅</span>Real-time safety & local data</li>
+            <li class="flex items-start"><span class="text-green-500 mr-3">✅</span>AI-powered perfect matches</li>
+            <li class="flex items-start"><span class="text-green-500 mr-3">✅</span>Automatic price optimization</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="py-20 px-6 bg-green-50">
-    <h2 class="text-3xl font-semibold text-center text-green-800 mb-12">Features</h2>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 text-left">
-      <div><h3 class="font-bold text-green-700 mb-1">🧭 AI Travel Chat</h3><p>Conversational assistant to plan, explore, and discover with ease.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">🗺️ Interactive Map</h3><p>Leaflet/Mapbox to show points of interest, dining, and events.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">📍 GIS Insights</h3><p>View heatmaps for safety, schools, traffic, and local zones.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">💰 Price Comparison</h3><p>Fetch rates from Booking.com, Uber, Skyscanner, and more.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">🧳 Smart Itinerary</h3><p>Drag-and-drop schedules and auto-suggested routes.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">🌿 Eco Filter</h3><p>Discover and support sustainable travel options.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">📸 Social Media Overlay</h3><p>Pull TikTok and Instagram content tagged at attractions.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">🏨 Corporate Planner</h3><p>Search venues and generate retreat/conference plans.</p></div>
-      <div><h3 class="font-bold text-green-700 mb-1">🛰️ GPS Navigation</h3><p>Get directions, trails, and scenic viewpoints instantly.</p></div>
+  <!-- App Preview Mockup -->
+  <section class="py-20 px-6 bg-gradient-to-br from-green-50 to-emerald-50">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-green-800 mb-6">See Gaia in Action</h2>
+      <p class="text-xl text-gray-600 mb-12">A glimpse into the future of travel planning</p>
+      
+      <!-- Mock Interface -->
+      <div class="glass rounded-3xl p-8 max-w-4xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <!-- Mock Header -->
+          <div class="bg-green-600 p-4 flex items-center">
+            <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full mr-2"></div>
+            <div class="w-3 h-3 bg-green-400 rounded-full"></div>
+            <div class="flex-1 text-center text-white font-semibold">Gaia - AI Travel Assistant</div>
+          </div>
+          
+          <!-- Mock Chat Interface -->
+          <div class="p-6 bg-gray-50 min-h-[400px] flex flex-col">
+            <div class="flex-1 space-y-6">
+              <!-- User Message -->
+              <div class="flex justify-end">
+                <div class="bg-green-600 text-white px-6 py-3 rounded-2xl rounded-br-md max-w-xs">
+                  "I want to visit Tokyo for 5 days with my partner. We love food and culture, budget around $3000"
+                </div>
+              </div>
+              
+              <!-- Gaia Response -->
+              <div class="flex justify-start">
+                <div class="bg-white border-2 border-green-100 px-6 py-4 rounded-2xl rounded-bl-md max-w-md">
+                  <div class="text-green-600 font-semibold mb-2">🗾 Perfect! I've found 3 amazing areas for you...</div>
+                  <div class="text-sm text-gray-600">✨ Shibuya (foodie paradise, $280/night)<br/>
+                  📍 Cultural sites within 10min walk<br/>
+                  💰 Total estimated cost: $2,847</div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Mock Input -->
+            <div class="flex items-center mt-6 bg-white rounded-full border-2 border-green-200 px-4 py-3">
+              <input type="text" placeholder="Ask Gaia anything about your trip..." class="flex-1 outline-none" disabled />
+              <button class="bg-green-600 text-white p-2 rounded-full ml-3">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 px-6 bg-white section-fade">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-16">How Gaia Works</h2>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+      <div class="text-center group">
+        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🧠</div>
+        <h3 class="text-2xl font-bold text-green-700 mb-4">Chat with Intelligence</h3>
+        <p class="text-gray-600 text-lg leading-relaxed">Ask natural questions, get intelligent answers. No more endless research or confusing interfaces.</p>
+      </div>
+      <div class="text-center group">
+        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">🗺️</div>
+        <h3 class="text-2xl font-bold text-green-700 mb-4">Explore Intelligently</h3>
+        <p class="text-gray-600 text-lg leading-relaxed">Interactive maps reveal hidden gems, safety zones, and real-time local insights you won't find anywhere else.</p>
+      </div>
+      <div class="text-center group">
+        <div class="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">✨</div>
+        <h3 class="text-2xl font-bold text-green-700 mb-4">Plan Effortlessly</h3>
+        <p class="text-gray-600 text-lg leading-relaxed">Auto-generated itineraries, instant price comparisons, and seamless booking integration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Revolutionary Features -->
+  <section class="py-20 px-6 bg-gradient-to-br from-gray-50 to-green-50">
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-6">Revolutionary Features</h2>
+    <p class="text-center text-xl text-gray-600 mb-16 max-w-3xl mx-auto">
+      Every feature designed to eliminate travel planning friction and maximize discovery
+    </p>
+    <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">🧭</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">AI Travel Genius</h3>
+        <p class="text-gray-600 leading-relaxed">Conversational assistant that understands context, preferences, and budget to deliver personalized recommendations instantly.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">🗺️</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Living Maps</h3>
+        <p class="text-gray-600 leading-relaxed">Interactive maps that breathe with real-time data - from crowd levels to weather, events to safety updates.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">📍</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">GIS Superpowers</h3>
+        <p class="text-gray-600 leading-relaxed">Advanced geographic insights revealing safety heatmaps, school zones, traffic patterns, and local demographics.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">💰</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Price Intelligence</h3>
+        <p class="text-gray-600 leading-relaxed">Real-time price monitoring across Booking.com, Uber, Skyscanner, and dozens of other platforms.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">🧳</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Smart Itineraries</h3>
+        <p class="text-gray-600 leading-relaxed">Drag-and-drop scheduling with AI-optimized routes, timing suggestions, and automatic rebooking capabilities.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">🌿</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Conscious Travel</h3>
+        <p class="text-gray-600 leading-relaxed">Discover and prioritize sustainable options - from eco-hotels to carbon-neutral transport alternatives.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">📸</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Social Discovery</h3>
+        <p class="text-gray-600 leading-relaxed">Live feeds from TikTok and Instagram tagged at locations, showing you what's happening right now.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">🏨</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Corporate Magic</h3>
+        <p class="text-gray-600 leading-relaxed">Specialized tools for retreat planning, conference organization, and group travel coordination.</p>
+      </div>
+      <div class="feature-card p-6 rounded-2xl">
+        <div class="text-4xl mb-4">🛰️</div>
+        <h3 class="font-bold text-green-700 mb-3 text-xl">Precision Navigation</h3>
+        <p class="text-gray-600 leading-relaxed">GPS-powered directions with scenic route alternatives, hiking trails, and hidden viewpoint discoveries.</p>
+      </div>
     </div>
   </section>
 
   <!-- Tech Stack -->
   <section class="py-20 px-6 bg-white">
-    <h2 class="text-3xl font-semibold text-center text-green-800 mb-12">Powered by Modern Tech</h2>
-    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center text-gray-700">
-      <div><p><strong>Frontend:</strong> React, Next.js</p></div>
-      <div><p><strong>Maps:</strong> Leaflet.js / Mapbox GL</p></div>
-      <div><p><strong>AI:</strong> GPT-4 API, HuggingFace</p></div>
-      <div><p><strong>Backend:</strong> Flask / Node.js</p></div>
-      <div><p><strong>Database:</strong> PostgreSQL + PostGIS</p></div>
-      <div><p><strong>Hosting:</strong> Vercel, AWS / GCP</p></div>
+    <h2 class="text-4xl font-bold text-center text-green-800 mb-6">Built with Cutting-Edge Technology</h2>
+    <p class="text-center text-xl text-gray-600 mb-16 max-w-3xl mx-auto">
+      Powered by the latest advances in AI, mapping, and cloud infrastructure
+    </p>
+    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12 text-center">
+      <div class="tech-icon group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⚛️</div>
+        <p class="text-lg"><strong class="text-green-700">Frontend:</strong><br/>React, Next.js, TypeScript</p>
+      </div>
+      <div class="tech-icon group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🗺️</div>
+        <p class="text-lg"><strong class="text-green-700">Maps:</strong><br/>Leaflet.js, Mapbox GL, PostGIS</p>
+      </div>
+      <div class="tech-icon group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🤖</div>
+        <p class="text-lg"><strong class="text-green-700">AI:</strong><br/>GPT-4, Claude, HuggingFace</p>
+      </div>
+      <div class="tech-icon group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">⚡</div>
+        <p class="text-lg"><strong class="text-green-700">Backend:</strong><br/>Node.js, Python, FastAPI</p>
+      </div>
+      <div class="tech-icon group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🏛️</div>
+        <p class="text-lg"><strong class="text-green-700">Database:</strong><br/>PostgreSQL, Redis, Vector DB</p>
+      </div>
+      <div class="tech-icon group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">☁️</div>
+        <p class="text-lg"><strong class="text-green-700">Cloud:</strong><br/>Vercel, AWS, GCP</p>
+      </div>
     </div>
   </section>
 
   <!-- Email Signup -->
-  <section id="signup" class="py-20 px-6 bg-green-100 text-center">
-    <h2 class="text-3xl font-semibold text-green-800 mb-6">Join the Early Access List</h2>
-    <p class="text-gray-700 max-w-xl mx-auto mb-6">Be the first to explore Gaia and help shape the future of intelligent travel.</p>
-    <form action="https://forms.gle/your-google-form-id" method="POST" target="_blank">
-      <input type="email" name="email" placeholder="Enter your email" required
-        class="w-full max-w-md mx-auto px-4 py-3 rounded-l-md border-t border-b border-l border-gray-300" />
-      <button type="submit"
-        class="bg-green-600 text-white px-6 py-3 rounded-r-md hover:bg-green-700 transition">Join Beta</button>
-    </form>
+  <section id="signup" class="py-20 px-6 bg-gradient-to-br from-green-100 to-emerald-100 text-center">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-4xl font-bold text-green-800 mb-6">Join the Travel Revolution</h2>
+      <p class="text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
+        Be among the first to experience the future of travel planning. Get exclusive early access and help shape Gaia's development.
+      </p>
+
+      <div class="glass rounded-3xl p-8 max-w-4xl mx-auto">
+        <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSc9Mf4OmozcpgY-K75NyZPkLjE_HKUf5owEPVE7ylT1rruklA/viewform?embedded=true"
+          width="100%" height="650" frameborder="0" marginheight="0" marginwidth="0" class="rounded-2xl">
+          Loading…
+        </iframe>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-white border-t py-8 px-6 text-center text-gray-600 text-sm">
-    <p>© 2025 Project Gaia. All rights reserved.</p>
-    <p class="mt-2">
-      <a href="mailto:hello@projectgaia.ai" class="text-green-700 hover:underline">Contact</a> |
-      <a href="#" class="text-green-700 hover:underline">Privacy Policy</a>
-    </p>
-    <p class="mt-2">Follow us: 
-      <a href="#" class="text-green-700 hover:underline mx-1">Instagram</a> 
-      <a href="#" class="text-green-700 hover:underline mx-1">LinkedIn</a>
-    </p>
+  <footer class="bg-gray-900 text-white py-12 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="text-3xl font-bold text-green-400 mb-4">Project Gaia</div>
+      <p class="text-gray-400 mb-6">Reimagining travel through artificial intelligence</p>
+      <div class="flex justify-center space-x-8 mb-8">
+        <a href="mailto:hello@projectgaia.ai" class="text-green-400 hover:text-green-300 transition">Contact</a>
+        <a href="#" class="text-green-400 hover:text-green-300 transition">Privacy Policy</a>
+        <a href="#" class="text-green-400 hover:text-green-300 transition">Terms</a>
+      </div>
+      <div class="flex justify-center space-x-6 mb-8">
+        <a href="#" class="text-gray-400 hover:text-green-400 transition text-2xl">📸</a>
+        <a href="#" class="text-gray-400 hover:text-green-400 transition text-2xl">💼</a>
+        <a href="#" class="text-gray-400 hover:text-green-400 transition text-2xl">🐦</a>
+      </div>
+      <p class="text-sm text-gray-500">© 2025 Project Gaia. All rights reserved.</p>
+    </div>
   </footer>
+
+  <script>
+    // Typewriter Effect
+    const phrases = [
+      "Your Personal AI Travel Cartographer",
+      "The Future of Travel Planning",
+      "Where Intelligence Meets Adventure",
+      "Travel Smarter, Not Harder"
+    ];
+    
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    
+    function typeEffect() {
+      const currentPhrase = phrases[phraseIndex];
+      const typewriterElement = document.getElementById('typewriter');
+      
+      if (isDeleting) {
+        typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+        
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          setTimeout(typeEffect, 500);
+          return;
+        }
+      } else {
+        typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+        
+        if (charIndex === currentPhrase.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 2000);
+          return;
+        }
+      }
+      
+      setTimeout(typeEffect, isDeleting ? 50 : 100);
+    }
+    
+    // Start typewriter effect
+    setTimeout(typeEffect, 1000);
+    
+    // Intersection Observer for fade-in animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all sections with fade effect
+    document.querySelectorAll('.section-fade').forEach(section => {
+      observer.observe(section);
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
